@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Cuenca - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Body Styles */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: black;
+            color: #00ff00;
+            text-shadow: 1px 1px 2px #000;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0 0 100px; /* Adds padding for the footer */
+            position: relative;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin: 30px auto;
+        }
+        header img {
+            border: 4px solid #00ff00;
+            margin-bottom: 20px;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px #000;
+        }
+        nav a:hover {
+            color: yellow;
+        }
+
+        /* Section Styles */
+        section {
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 20px;
+            border: 3px solid #00ff00;
+            background-color: #111;
+            box-shadow: 0 0 15px #00ff00;
+            border-radius: 8px;
+            text-align: center;
+        }
+        section h2 {
+            margin-bottom: 20px;
+        }
+
+        /* About Me Section */
+        #about-me {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        #about-me img {
+            width: 150px;
+            height: auto;
+            border: 3px solid #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        #about-me p {
+            text-align: left; /* Change to left alignment */
+            line-height: 1.6; /* Adjust line spacing for readability */
+            margin-bottom: 20px; /* Add spacing between paragraphs */
+            color: #00ff00;
+        }
+
+        /* Card Styles */
+        .projects .card {
+            background-color: #222;
+            border: 2px dashed #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .projects .card img {
+            width: 100%;
+            max-width: 300px;
+            margin: 15px auto;
+            display: block;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            color: #00ff00;
+            padding: 10px 0;
+            background-color: #111;
+            border-top: 3px solid #00ff00;
+        }
+
+        /* Interactive UFO Styles */
+        #cat {
+            pointer-events: none;
+            position: absolute;
+            width: 100px;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Background */
+        body::before {
+            content: '';
+            background: url('bg.webp') repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #about-me {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Nicolas Cuenca</h1>
+        <img src="nic.png" alt="Picture of Nicolas Cuenca" style="width:150px; height:auto; border-radius:50%;">
+        <nav>
+            <a href="#about-me">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+<section id="about-me">
+    <h2>About Me</h2>
+    <p>
+        I began my journey into software development with a passion for solving real-world problems and creating impactful projects. 
+        As a student at UCLA, I’ve honed my skills in Computer Science, diving deep into object-oriented programming, web technologies, and systems design. 
+        My journey started with hands-on experiences, from building Arduino-based systems to developing innovative apps for group payments and event management.
+    </p>
+    <p>
+        My early professional experiences include providing technical support and engineering solutions for educational technology at Arcadia Unified School District, 
+        where I optimized processes and supported over 1,000 devices. Alongside my academic pursuits, I’ve worked on personal projects such as group payment 
+        applications and collaborative platforms, showcasing my ability to merge technical skills with creativity.
+    </p>
+    <p>
+        Outside of academics and work, I’m deeply passionate about retro gaming, boxing, and creative problem-solving. 
+        Born in Bolivia and raised in the U.S., I’ve embraced challenges with a global perspective, driven to make meaningful contributions through technology.
+    </p>
+    <p>
+        These days, I’m focused on refining my skills in iOS development, Python, and modern frameworks, while continuing to explore new technologies and projects that push the boundaries of innovation.
+    </p>
+</section>
+
+    
+
+    <section id="education">
+        <h2>Education</h2>
+        <p><strong>University of California, Los Angeles</strong> (Aug. 2022 - Dec. 2024)<br>
+        Bachelor of Science in Computer Science, Los Angeles, CA</p>
+        <p><strong>Pasadena City College</strong> (June 2022)<br>
+        Associate’s in Engineering and Technology and Liberal Arts, Pasadena, CA</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p><strong>Arcadia Unified School District</strong> (August 2019 – July 2022)<br>
+        <em>Computer Information Support, Arcadia, CA</em></p>
+        <ul>
+            <li>Developed Arduino-based systems for efficient registration and management of over 1000+ Chromebook devices using C++.</li>
+            <li>Performed diagnostic tests and troubleshooting on computing systems to ensure optimal functionality.</li>
+            <li>Provided technical support and training for students and teachers to enhance access to educational technology.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Nicolas Cuenca. All rights reserved.</p>
+    </footer>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <h3>Influence</h3>
+                <p><strong>Technologies:</strong> Python, React, Firebase (Auth, Storage, Firestore), Material UI</p>
+                <ul>
+                    <li>Engineered an engaging real-time social platform with a Python-driven backend and a React-driven frontend.</li>
+                    <li>Leveraged Python for server-side scripting and Firebase Firestore for scalable data storage and real-time data synchronization.</li>
+                    <li>Designed an authentication system using Python and Firebase Auth to protect user data and privacy.</li>
+                    <li>Integrated advanced media handling capabilities, allowing users to share images and videos seamlessly.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Bclub</h3>
+                <p><strong>Technologies:</strong> React.js, Node.js, Firebase, Git/GitHub</p>
+                <p><a href="https://astounding-chebakia-393c4f.netlify.app/" target="_blank">Bclub Application</a></p>
+                <ul>
+                    <li>Created a client-server web application that provides reviewing, comparing, and researching capabilities for UCLA’s clubs and organizations.</li>
+                    <li>Designed the site’s UI/UX and implemented navigation, backend interactions, and server communication.</li>
+                    <li>Collaborated with a team to review and debug the project for the final release.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>DevHub</h3>
+                <p><strong>Technologies:</strong> MERN Stack (MongoDB, Express.js, React, Node.js), Docker</p>
+                <ul>
+                    <li>Engineered DevHub, a collaborative platform facilitating real-time interaction and content sharing among developers.</li>
+                    <li>Established a DevOps workflow with Docker for seamless application deployment and consistent environments.</li>
+                    <li>Enhanced the user experience with a dynamic front-end in React and robust backend authentication.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <ul>
+                <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML/CSS</li>
+                <li><strong>Frameworks:</strong> React.js, Node.js, Express.js, Material UI</li>
+                <li><strong>Developer Tools:</strong> Git/GitHub, Firebase, Docker</li>
+                <li><strong>Databases:</strong> MongoDB, Firebase Realtime Database</li>
+                <li><strong>Soft Skills:</strong> Team collaboration, problem-solving, adaptability</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you’d like to get in touch, feel free to reach out to me:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:nicolascuenca@rocketmail.com">nicolacuenca@rocketmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+16264132296">(626) 413-2296</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nicolaswcuenca" target="_blank">linkedin.com/in/nicolaswcuenca</a></li>
+        </ul>
+    </section>
+    
+    
+
+    <!-- Interactive UFO -->
+    <img id="cat" src="ufo.gif" alt="Interactive UFO">
+
+    <script>
+        const cat = document.getElementById("cat");
+    
+        let mouseX = 0, mouseY = 0;
+        let catX = window.innerWidth / 2, catY = window.innerHeight / 2;
+    
+        // Update the mouse position on movement
+        document.addEventListener("mousemove", (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY + window.scrollY; // Adjust for scrolling
+        });
+    
+        function moveCat() {
+            // Gradually move the UFO towards the mouse
+            const speed = 0.02; // Lower speed value for slower following
+            catX += (mouseX - catX) * speed;
+            catY += (mouseY - catY) * speed;
+    
+            // Update the UFO's position
+            cat.style.left = `${catX}px`;
+            cat.style.top = `${catY}px`;
+    
+            requestAnimationFrame(moveCat); // Continue the animation loop
+        }
+    
+        moveCat(); // Start the animation
+    </script>
+    
+</body>
+</html>
