@@ -6,6 +6,16 @@
     <title>Nicolas Cuenca - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        .glow {
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+        0%   { opacity: 1; }
+        100% { opacity: 0.5; }
+        }
         /* Body Styles */
         body {
             font-family: 'Press Start 2P', cursive;
@@ -14,10 +24,9 @@
             text-shadow: 1px 1px 2px #000;
             line-height: 1.8;
             margin: 0;
-            padding: 0 0 100px; /* Adds padding for the footer */
+            padding: 0 0 100px;
             position: relative;
         }
-
         /* Header Styles */
         header {
             text-align: center;
@@ -29,6 +38,7 @@
         }
         nav {
             margin-top: 15px;
+            z-index: 1002;
         }
         nav a {
             color: #00ff00;
@@ -39,6 +49,39 @@
         }
         nav a:hover {
             color: yellow;
+        }
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #111;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            top: 120%;
+            left: 0;
+            min-width: 200px;
+            margin-top: -10px;
+            text-align: left;
+            z-index: 1001;
+        }
+        .dropdown-content a {
+            color: #00ff00;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+        .dropdown-content a:hover {
+            background-color: #222;
+            color: yellow;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Section Styles */
@@ -55,8 +98,6 @@
         section h2 {
             margin-bottom: 20px;
         }
-
-        /* About Me Section */
         #about-me {
             display: flex;
             flex-wrap: wrap;
@@ -72,13 +113,11 @@
             box-shadow: 0 0 10px #00ff00;
         }
         #about-me p {
-            text-align: left; /* Change to left alignment */
-            line-height: 1.6; /* Adjust line spacing for readability */
-            margin-bottom: 20px; /* Add spacing between paragraphs */
+            text-align: left;
+            line-height: 1.6;
+            margin-bottom: 20px;
             color: #00ff00;
         }
-
-        /* Card Styles */
         .projects .card {
             background-color: #222;
             border: 2px dashed #00ff00;
@@ -94,8 +133,6 @@
             margin: 15px auto;
             display: block;
         }
-
-        /* Footer Styles */
         footer {
             text-align: center;
             color: #00ff00;
@@ -103,8 +140,6 @@
             background-color: #111;
             border-top: 3px solid #00ff00;
         }
-
-        /* Interactive UFO Styles */
         #cat {
             pointer-events: none;
             position: absolute;
@@ -114,21 +149,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
-        /* Background */
-        body::before {
-            content: '';
-            background: url('bg.webp') repeat;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             #about-me {
                 flex-direction: column;
@@ -136,160 +156,550 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body>
-    <header>
-        <h1>Nicolas Cuenca</h1>
-        <img src="nic.png" alt="Picture of Nicolas Cuenca" style="width:150px; height:auto; border-radius:50%;">
-        <nav>
-            <a href="#about-me">About Me</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-<section id="about-me">
-    <h2>About Me</h2>
-    <p>
-        I began my journey into software development with a passion for solving real-world problems and creating impactful projects. 
-        As a student at UCLA, I’ve honed my skills in Computer Science, diving deep into object-oriented programming, web technologies, and systems design. 
-        My journey started with hands-on experiences, from building Arduino-based systems to developing innovative apps for group payments and event management.
-    </p>
-    <p>
-        My early professional experiences include providing technical support and engineering solutions for educational technology at Arcadia Unified School District, 
-        where I optimized processes and supported over 1,000 devices. Alongside my academic pursuits, I’ve worked on personal projects such as group payment 
-        applications and collaborative platforms, showcasing my ability to merge technical skills with creativity.
-    </p>
-    <p>
-        Outside of academics and work, I’m deeply passionate about retro gaming, boxing, and creative problem-solving. 
-        Born in Bolivia and raised in the U.S., I’ve embraced challenges with a global perspective, driven to make meaningful contributions through technology.
-    </p>
-    <p>
-        These days, I’m focused on refining my skills in iOS development, Python, and modern frameworks, while continuing to explore new technologies and projects that push the boundaries of innovation.
-    </p>
-</section>
-
-    
-
-    <section id="education">
-        <h2>Education</h2>
-        <p><strong>University of California, Los Angeles</strong> (Aug. 2022 - Dec. 2024)<br>
-        Bachelor of Science in Computer Science, Los Angeles, CA</p>
-        <p><strong>Pasadena City College</strong> (June 2022)<br>
-        Associate’s in Engineering and Technology and Liberal Arts, Pasadena, CA</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="card">
-                <h3>Influence</h3>
-                <p><strong>Technologies:</strong> Python, React, Firebase (Auth, Storage, Firestore), Material UI</p>
-                <ul>
-                    <li>Engineered an engaging real-time social platform with a Python-driven backend and a React-driven frontend.</li>
-                    <li>Leveraged Python for server-side scripting and Firebase Firestore for scalable data storage and real-time data synchronization.</li>
-                    <li>Designed an authentication system using Python and Firebase Auth to protect user data and privacy.</li>
-                    <li>Integrated advanced media handling capabilities, allowing users to share images and videos seamlessly.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Bclub</h3>
-                <p><strong>Technologies:</strong> React.js, Node.js, Firebase, Git/GitHub</p>
-                <p><a href="https://astounding-chebakia-393e9f.netlify.app/" target="_blank">Bclub Application</a></p>
-                <ul>
-                    <li>Created a client-server web application that provides reviewing, comparing, and researching capabilities for UCLA’s clubs and organizations.</li>
-                    <li>Designed the site’s UI/UX and implemented navigation, backend interactions, and server communication.</li>
-                    <li>Collaborated with a team to review and debug the project for the final release.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>DevHub</h3>
-                <p><strong>Technologies:</strong> MERN Stack (MongoDB, Express.js, React, Node.js), Docker</p>
-                <ul>
-                    <li>Engineered DevHub, a collaborative platform facilitating real-time interaction and content sharing among developers.</li>
-                    <li>Established a DevOps workflow with Docker for seamless application deployment and consistent environments.</li>
-                    <li>Enhanced the user experience with a dynamic front-end in React and robust backend authentication.</li>
-                </ul>
-            </div>
+<body class="hide-bg">
+    <canvas id="matrix-canvas" style="opacity: 0;"></canvas>
+    <div id="terminal-overlay">
+        <div id="terminal-inner">
+            <div id="terminal-text"></div>
         </div>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-        <p><strong>Arcadia Unified School District</strong> (August 2019 – July 2022)<br>
-        <em>Computer Information Support, Arcadia, CA</em></p>
-        <ul>
-            <li>Developed Arduino-based systems for efficient registration and management of over 1000+ Chromebook devices using C++.</li>
-            <li>Performed diagnostic tests and troubleshooting on computing systems to ensure optimal functionality.</li>
-            <li>Provided technical support and training for students and teachers to enhance access to educational technology.</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Nicolas Cuenca. All rights reserved.</p>
-    </footer>
-
-
+    </div>
+    <audio id="type-sound" src="type_1.mp3" preload="auto"></audio>
     
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills">
-            <ul>
-                <li><strong>Languages:</strong> Python, Java, JavaScript, C++, HTML/CSS</li>
-                <li><strong>Frameworks:</strong> React.js, Node.js, Express.js, Material UI</li>
-                <li><strong>Developer Tools:</strong> Git/GitHub, Firebase, Docker</li>
-                <li><strong>Databases:</strong> MongoDB, Firebase Realtime Database</li>
-                <li><strong>Soft Skills:</strong> Team collaboration, problem-solving, adaptability</li>
+    <div id="easter-terminal">
+        <input type="text" id="command-input" placeholder=">_" autocomplete="off" />
+    </div>
+
+
+    <div id="main-content">
+        <header>
+            <h1>Nicolas Cuenca</h1>
+            <p style="color: #00ff00; margin-top: 10px; font-size: 0.8em; text-shadow: 0 0 5px #00ff00;">
+                Secure system builder. Passionate about defense, resilience, and real-world impact.
+            </p>            <img src="nic.png" alt="Picture of Nicolas Cuenca" style="width:150px; height:auto; border-radius:50%; border: 4px solid #00ff00;">
+            <nav style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
+                <a href="#about-me">About Me</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#leadership">Leadership</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#skills">Skills</a>
+                <a href="#homelab">Home Lab</a>
+                <a href="#contact">Contact</a>
+                
+                <div class="dropdown">
+                    <span class="dropbtn">Resumés ▾</span>          
+                    <div class="dropdown-content">
+                    <a href="swe.html">SWE Résumé</a>
+                    <a href="it.html">IT Résumé</a>
+                    <a href="cyber.html">Cybersecurity Résumé</a>
+                    <a href="17x.html">17X Résumé</a>
+                    </div>
+                </div>          
+            </nav>    
+        </header>
+
+        <section id="about-me">
+            <h2>About Me</h2>
+            <p>I’m Nicolas Cuenca — a recent Computer Science graduate from UCLA with a passion for building secure, impactful tech. I specialize in full-stack development, secure systems, and technical support, with hands-on experience in web, iOS, CLI tools, and IT infrastructure.</p>
+            <p>My career focus spans multiple tracks: Software Engineering, IT/System Administration, Cybersecurity, and I’m currently preparing to apply for the 17X Cyberspace Operations Officer path in the U.S. Air Force. I thrive in environments where I can create tools that solve real problems, support users, and protect digital systems.</p>
+            <p>
+                I also maintain a personal cybersecurity home lab, where I’ve simulated attacks and defenses using tools like <em>Kali Linux</em>, <em>pfSense</em>, <em>Wireshark</em>, <em>Hydra</em>, <em>Metasploit</em>, and more. It’s where I practice blue/red team operations, harden Windows Server VMs, and analyze network traffic in controlled environments.
+            </p>
+            <p>On this site, you’ll find:</p>
+            <ul style="text-align:left; max-width: 700px; margin: 0 auto;">
+                <li>🔧 Projects I’ve built across mobile, web, CLI, and security</li>
+                <li>📄 Tailored résumés for SWE, IT, Cybersecurity, and 17X applications</li>
+                <li>🧐 A clear look at my technical skillset and experience</li>
             </ul>
-        </div>
-    </section>
+            <p>Whether you’re a recruiter, an engineer, or an officer — I’d love to connect and explore how I can bring value to your team.</p>
+        </section>
+        
+        <section id="education">
+            <h2>Education</h2>
+            <p><strong>University of California, Los Angeles</strong> (Aug. 2022 - Dec. 2024)<br>
+            Bachelor of Science in Computer Science, Los Angeles, CA</p>
+            <p><strong>Pasadena City College</strong> (June 2022)<br>
+            Associate’s in Engineering and Technology and Liberal Arts, Pasadena, CA</p>
+        </section>
+        
+        <section id="experience">
+            <h2>Experience</h2>
+            <p><strong>Arcadia Unified School District</strong> (Summers of 2018, 2019, 2022)<br><em>IT Support Intern — Arcadia, CA</em></p>
+            <ul>
+                <li>Performed Chrome OS system updates, resets, and device maintenance; supported user login issues and troubleshooting.</li>
+                <li>Logged and registered over 1000+ Chromebooks using Arduino-based inventory systems; maintained detailed deployment records.</li>
+                <li>Replaced hardware like batteries and screens; worked with IT teams on repair prep and inventory checks.</li>
+                <li>Installed drivers and resolved network issues with printers/scanners across schools.</li>
+                <li>Tested AV equipment (projectors, mics, speakers) for classrooms and district-wide events.</li>
+            </ul>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="card">
+                    <h3>Blü (iOS App)</h3>
+                    <p><strong>Technologies:</strong> Swift, SwiftUI, Firebase, MapKit</p>
+                    <ul>
+                        <li>Led development of Blü, a group expense splitting app that organizes costs around location-based hangouts.</li>
+                        <li>Designed smooth, modular UI/UX in SwiftUI with Firebase for real-time sync and secure user data.</li>
+                        <li>Features include receipt-tagged expenses, session breakdowns, and GPS integration.</li>
+                    </ul>
+                    <p><a href="https://github.com/nickcuenca/blu-ios" target="_blank">View on GitHub</a></p>
+                </div>
+        
+                <div class="card">
+                    <h3>Credential Vault CLI Tool</h3>
+                    <p><strong>Technologies:</strong> Python, Cryptography, Flask, GitHub Actions</p>
+                    <ul>
+                        <li>Created a password manager that encrypts data using AES-256 and supports secure local storage.</li>
+                        <li>CLI interface with search/edit/delete functions, 2FA (TOTP), audit logs, and QR provisioning.</li>
+                        <li>Integrated optional Flask GUI and set up GitHub CI with 90%+ unit test coverage.</li>
+                    </ul>
+                    <p><a href="https://github.com/nickcuenca/credential-vault-cli" target="_blank">View on GitHub</a></p>
+                </div>
+        
+                <div class="card">
+                    <h3>Influence (Social Platform)</h3>
+                    <p><strong>Technologies:</strong> Python, React, Firebase (Auth, Storage, Firestore)</p>
+                    <ul>
+                        <li>Built a full-stack media platform supporting real-time posts with image/video sharing.</li>
+                        <li>Integrated Firebase Auth and Firestore for scalable and secure cloud-backed sessions.</li>
+                    </ul>
+                </div>
+        
+                <div class="card">
+                    <h3>Bclub (Club Directory App)</h3>
+                    <p><strong>Technologies:</strong> React.js, Node.js, Firebase</p>
+                    <ul>
+                        <li>Built a dynamic directory web app for UCLA students to compare campus clubs and leave reviews.</li>
+                        <li>Managed responsive layout, Firebase backend, and authentication.</li>
+                    </ul>
+                    <p><a href="https://astounding-chebakia-393e9f.netlify.app/" target="_blank">Visit Bclub</a></p>
+                </div>
+        
+                <div class="card">
+                    <h3>DevHub (Developer Community)</h3>
+                    <p><strong>Technologies:</strong> MERN Stack, Docker</p>
+                    <ul>
+                        <li>Created a collaborative content-sharing site with user profiles, live updates, and moderation tools.</li>
+                        <li>Used Docker for containerized dev/test environments and deployment pipelines.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="leadership">
+            <h2>Leadership Experience</h2>
+            <ul style="text-align:left;">
+                <li><strong>SHPE - PCC Chapter, Vice President</strong> – Led outreach to underrepresented communities, managed team of 5+ officers.</li>
+                <li><strong>Delta Sigma Phi, Pledge Class President</strong> – Organized team bonding and facilitated communication with leadership.</li>
+                <li><strong>Arcadia USD, Team Lead</strong> – Delegated device maintenance tasks, coordinated team of interns.</li>
+                <li><strong>UCLA Intramural Soccer, Team Captain</strong> – Managed strategy, rotations, and led team to a strong finish.</li>
+            </ul>
+        </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>If you’d like to get in touch, feel free to reach out to me:</p>
-        <ul>
-            <li><strong>Email:</strong> <a href="mailto:nicolascuenca@rocketmail.com">nicolacuenca@rocketmail.com</a></li>
-            <li><strong>Phone:</strong> <a href="tel:+16264132296">(626) 413-2296</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nicolaswcuenca" target="_blank">linkedin.com/in/nicolaswcuenca</a></li>
-        </ul>
-    </section>
-    
-    
 
-    <!-- Interactive UFO -->
-    <img id="cat" src="ufo.gif" alt="Interactive UFO">
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <ul style="text-align:left;">
+                <li><strong>CompTIA A+ (In Progress)</strong> – Foundational certification for IT troubleshooting and support.</li>
+                <li><strong>CompTIA Security+ (Planned)</strong> – DoD-compliant security cert covering risk management & threat response.</li>
+                <li><strong>Google IT Support (Coursera)</strong> – Entry-level training in systems, networking, and security.</li>
+                <li><strong>AWS Cloud Practitioner (Planned)</strong> – Certification for cloud concepts, architecture, and compliance.</li>
+                <li><strong>Cisco CyberOps Associate (Planned)</strong> – Security operations, SOC monitoring, and threat detection.</li>
+            </ul>
+        </section>    
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><strong>Languages:</strong> Python, C/C++, Swift, Java, JavaScript, Bash, HTML/CSS, SQL</li>
+                <li><strong>Frameworks/Technologies:</strong> SwiftUI, Firebase (Auth, Firestore, Storage), MapKit, React, Node.js, Docker, MongoDB</li>
+                <li><strong>Libraries/Tools:</strong> cryptography (Python), Pandas, NumPy, scikit-learn, Git/GitHub, VS Code</li>
+                <li><strong>Other Tools:</strong> Zoom, Slack, WordPress</li>
+                <li><strong>Security:</strong> AES, TOTP, 2FA, Zero-Trust Design</li>
+            </ul>
+]        </section>
+        
+        <section id="homelab">
+            <h2>Cybersecurity Home Lab</h2>
+            <ul style="text-align:left;">
+              <li>⚙️ Built isolated network environments using VirtualBox with pfSense for firewall & network segmentation.</li>
+              <li>🛡️ Hardened Windows Server 2019 instances; configured password policies and RDP logging.</li>
+              <li>🧨 Performed red/blue team exercises using Nmap, Hydra, and Metasploit.</li>
+              <li>🔍 Used Wireshark to monitor traffic, detect anomalies, and simulate real-world breach scenarios.</li>
+            </ul>
+        </section>
+        
+          
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you’d like to get in touch, feel free to reach out to me:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:nicolascuenca@rocketmail.com">nicolacuenca@rocketmail.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+16264132296">(626) 413-2296</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nicolaswcuenca" target="_blank">linkedin.com/in/nicolaswcuenca</a></li>
+                <li><strong>Github:</strong> <a href="https://github.com/nickcuenca" target="_blank">https://github.com/nickcuenca</a></li>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/nickwcuenca/" target="_blank">https://www.instagram.com/nickwcuenca/</a></li>
+            </ul>
+        </section>
+
+        <section style="text-align: center; margin: 50px auto; max-width: 800px; color: #00ff00;">
+            <h2 style="margin-bottom: 10px;">Let’s Connect</h2>
+            <p>If you’re looking for a developer, support specialist, or future 17X cyberspace officer — I’d love to chat.</p>
+            <p>Currently open to Software Engineering, Cybersecurity, and IT roles.</p>
+            <p><strong>Email me at:</strong> <a href="mailto:nicolascuenca@rocketmail.com" style="color: yellow;">nicolascuenca@rocketmail.com</a></p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Nicolas Cuenca. All rights reserved.</p>
+        </footer>
+
+
+    </div>
+
+<!-- UFO Script -->
+<img id="cat" src="ufo.gif" alt="Interactive UFO">
+<script>
+    const cat = document.getElementById("cat");
+    let mouseX = 0, mouseY = 0;
+    let catX = window.innerWidth / 2, catY = window.innerHeight / 2;
+    document.addEventListener("mousemove", (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY + window.scrollY;
+    });
+    function moveCat() {
+        const speed = 0.01;
+        catX += (mouseX - catX) * speed;
+        catY += (mouseY - catY) * speed;
+        cat.style.left = `${catX}px`;
+        cat.style.top = `${catY}px`;
+        requestAnimationFrame(moveCat);
+    }
+    moveCat();
+</script>
+
+<script>
+    function launchAttackSequence() {
+        const jet = document.createElement("img");
+        jet.src = "jet.gif";
+        jet.style.position = "absolute";
+        jet.style.width = "150px";
+        jet.style.left = "-200px";
+        jet.style.top = "-200px";
+        jet.style.zIndex = "998";
+        jet.style.transformOrigin = "center center";
+        jet.id = "attack-jet";
+        document.body.appendChild(jet);
+
+        const ufo = document.getElementById("cat");
+
+        // Animate the jet toward the UFO while rotating
+        const jetInterval = setInterval(() => {
+            const jetBox = jet.getBoundingClientRect();
+            const ufoBox = ufo.getBoundingClientRect();
+
+            const jetCenterX = jetBox.left + jetBox.width / 2;
+            const jetCenterY = jetBox.top + jetBox.height / 2;
+            const ufoCenterX = ufoBox.left + ufoBox.width / 2;
+            const ufoCenterY = ufoBox.top + ufoBox.height / 2;
+
+            // Move toward UFO
+            const dx = ufoCenterX - jetCenterX;
+            const dy = ufoCenterY - jetCenterY;
+            const angle = Math.atan2(dy, dx);
+            const speed = 4;
+
+            jet.style.left = `${jet.offsetLeft + Math.cos(angle) * speed}px`;
+            jet.style.top = `${jet.offsetTop + Math.sin(angle) * speed}px`;
+
+            jet.style.transform = `rotate(${angle}rad)`;
+
+            // Fire missile when close enough
+            const distance = Math.hypot(dx, dy);
+            if (distance < 120) {
+            clearInterval(jetInterval);
+            fireMissile(ufo, jet, angle);
+        }
+        }, 20);
+        }
+
+        function fireMissile(ufo, jet, jetAngle) {
+            const missile = document.createElement("img");
+            missile.src = "missile_withexplosion.gif";
+            missile.style.position = "absolute";
+            missile.style.width = "100px";
+            missile.style.zIndex = "1000";
+            missile.style.transform = `rotate(${jetAngle}rad)`;
+            document.body.appendChild(missile);
+
+            // Start missile near jet
+            const jetBox = jet.getBoundingClientRect();
+            missile.style.left = `${jetBox.left + 50}px`;
+            missile.style.top = `${jetBox.top + 50}px`;
+
+            // Animate toward the UFO with that angle
+            const missileInterval = setInterval(() => {
+                const missileBox = missile.getBoundingClientRect();
+                const ufoBox = ufo.getBoundingClientRect();
+
+                const missileX = missile.offsetLeft;
+                const missileY = missile.offsetTop;
+
+                const dx = (ufoBox.left + ufoBox.width / 2) - (missileX + 50);
+                const dy = (ufoBox.top + ufoBox.height / 2) - (missileY + 50);
+                const targetAngle = Math.atan2(dy, dx);
+                const speed = 7;
+
+                // Update missile position (still tracking UFO but starts with jet's angle)
+                missile.style.left = `${missile.offsetLeft + Math.cos(targetAngle) * speed}px`;
+                missile.style.top = `${missile.offsetTop + Math.sin(targetAngle) * speed}px`;
+
+                // 🔁 (Optional) let missile rotate slightly as it homes in
+                missile.style.transform = `rotate(${targetAngle}rad)`;
+
+                const distance = Math.hypot(dx, dy);
+                if (distance < 80) {
+                clearInterval(missileInterval);
+                explodeMissile(missile, ufo);
+                escapeJet(jet);
+                }
+            }, 20);
+            }
+
+        function explodeMissile(missile, ufo) {
+        ufo.style.opacity = "0.3";
+        setTimeout(() => {
+            missile.remove();
+            ufo.style.opacity = "1";
+        }, 1000);
+        }
+
+        function escapeJet(jet) {
+        const startX = jet.offsetLeft;
+        const startY = jet.offsetTop;
+        const endX = window.innerWidth + 400;
+        const endY = -200;
+        const angle = Math.atan2(endY - startY, endX - startX);
+
+        const escapeInterval = setInterval(() => {
+            jet.style.left = `${jet.offsetLeft + Math.cos(angle) * 10}px`;
+            jet.style.top = `${jet.offsetTop + Math.sin(angle) * 10}px`;
+            jet.style.transform = `rotate(${angle}rad)`;
+
+            if (jet.offsetLeft > window.innerWidth + 300 || jet.offsetTop < -300) {
+            clearInterval(escapeInterval);
+            jet.remove();
+            }
+        }, 16);
+        }
+
+
+</script>
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("command-input");
+  
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const command = input.value.trim().toLowerCase();
+          console.log("Command entered:", command);
+          input.value = ""; // clear the field
+  
+          if (command === "attack ufo") {
+            launchAttackSequence(); // 🚀 triggers your jet attack
+          }
+        }
+      });
+    });
+</script>
+  
+    
+  
+
+
+<script>
+    const terminalLines = [
+        "booting https://nickcuenca.github.io...",
+        "establishing encrypted connection...",
+        "verifying credentials...",
+        "launching portfolio interface..."
+    ];
+
+    let i = 0, j = 0, output = "";
+    const terminalText = document.getElementById("terminal-text");
+    const audio = document.getElementById("type-sound");
+    const overlay = document.getElementById("terminal-overlay");
+
+    // Show click-to-start message initially
+    terminalText.innerHTML = "Click anywhere to begin...";
+
+    function typeAccessGranted(text, targetElement, callback) {
+        let idx = 0;
+        function typeChar() {
+            if (idx < text.length) {
+                targetElement.innerHTML += text[idx];
+                idx++;
+                setTimeout(typeChar, 65);
+            } else if (callback) {
+                callback();
+            }
+        }
+        typeChar();
+    }
+
+
+    function startTyping() {
+        document.removeEventListener("click", startTyping);
+        terminalText.innerHTML = "";
+        output = "";
+        i = 0;
+        j = 0;
+
+        // ✅ Hides bg.png
+        document.body.classList.add('hide-bg');
+
+        document.addEventListener("keydown", () => {
+            i = terminalLines.length; // Skip to end
+            j = 0;
+        });
+
+        if (audio) {
+            audio.currentTime = 0;
+            audio.play().catch(() => {
+                console.warn("User interaction required for audio.");
+            });
+        }
+
+        typeLine();
+    }
+
+    function typeLine() {
+    // Check if still typing lines
+    if (i < terminalLines.length) {
+        let currentLineDiv = document.getElementById("line-" + i);
+        
+        // Create new line div if not started
+        if (!currentLineDiv) {
+            currentLineDiv = document.createElement("div");
+            currentLineDiv.id = "line-" + i;
+            currentLineDiv.innerHTML = ""; // start empty
+            terminalText.appendChild(currentLineDiv); // ⬇️ Adds to bottom visually
+        }
+
+        // Append one character at a time
+        if (j < terminalLines[i].length) {
+            currentLineDiv.innerHTML += terminalLines[i][j];
+            j++;
+            setTimeout(typeLine, 55);
+        } else {
+            i++;
+            j = 0;
+            setTimeout(typeLine, 282);
+        }
+    } else {
+        // Add more blank lines for extra spacing
+        for (let k = 0; k < 6; k++) {
+            const spacer = document.createElement("div");
+            spacer.innerHTML = "&nbsp;";
+            terminalText.appendChild(spacer);
+        }
+
+
+        // ACCESS GRANTED message
+        const doneLine = document.createElement("div");
+        const span = document.createElement("span");
+        span.className = "glow glitch";
+        doneLine.appendChild(span);
+        terminalText.appendChild(doneLine);
+
+        typeAccessGranted("ACCESS GRANTED █", doneLine);
+
+        document.body.classList.add("shake");
+        setTimeout(() => {
+            document.body.classList.remove("shake");
+        }, 600);
+
+        // Reveal the main content
+        setTimeout(() => {
+            overlay.style.transition = "opacity 1s ease";
+            overlay.style.opacity = "0";
+            document.body.classList.add('show-bg');
+            document.getElementById('cat').style.opacity = '1';
+            document.getElementById('main-content').style.display = 'block';
+            canvas.style.opacity = "0";
+
+            setTimeout(() => {
+                canvas.style.display = "none";
+                overlay.style.display = "none";
+            }, 1000);
+        }, 1650);
+    }
+}
+
+
+    document.addEventListener("click", startTyping);
+</script>
+
+
+<script>
+    const canvas = document.getElementById("matrix-canvas");
+    const ctx = canvas.getContext("2d");
+    
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.zIndex = "0";
+    canvas.style.pointerEvents = "none";
+    canvas.style.opacity = "0.2";
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+    const characters = "01";
+    
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00FF00";
+        ctx.font = `${fontSize}px monospace`;
+    
+        for (let i = 0; i < drops.length; i++) {
+            const char = characters.charAt(Math.floor(Math.random() * characters.length));
+            ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    
+    setInterval(drawMatrix, 50);
+    </script>
 
     <script>
-        const cat = document.getElementById("cat");
-    
-        let mouseX = 0, mouseY = 0;
-        let catX = window.innerWidth / 2, catY = window.innerHeight / 2;
-    
-        // Update the mouse position on movement
-        document.addEventListener("mousemove", (event) => {
-            mouseX = event.clientX;
-            mouseY = event.clientY + window.scrollY; // Adjust for scrolling
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        
+            // Update drops array too!
+            const columns = Math.floor(canvas.width / fontSize);
+            drops.length = 0;
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
         });
-    
-        function moveCat() {
-            // Gradually move the UFO towards the mouse
-            const speed = 0.01; // Lower speed value for slower following
-            catX += (mouseX - catX) * speed;
-            catY += (mouseY - catY) * speed;
-    
-            // Update the UFO's position
-            cat.style.left = `${catX}px`;
-            cat.style.top = `${catY}px`;
-    
-            requestAnimationFrame(moveCat); // Continue the animation loop
-        }
-    
-        moveCat(); // Start the animation
     </script>
-    
 </body>
 </html>
