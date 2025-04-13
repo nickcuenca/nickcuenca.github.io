@@ -485,9 +485,16 @@ body.show-bg #main-content {
             font-size: 0.9em;
             margin: 5px;
         }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
     
         section {
             padding: 15px;
+            box-shadow: 0 0 10px #00ff00;
+            border-width: 2px;
         }
     
         .projects {
